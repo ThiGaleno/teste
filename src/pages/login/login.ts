@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MoviesProvider } from '../../providers/movies/movies';
 
 /**
  * Generated class for the LoginPage page.
@@ -12,20 +13,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers: [
+    MoviesProvider
+  ]
 })
 export class LoginPage {
   public nomeUsuario:string = "troxa";
+
+  public lista_filmes = new Array<any>();
 
   public alertar(nome:string, idade:string){
     alert("Olá " + nome + " Legal saber que vc tem " + idade + " anos. :)");
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private moviesProvider: MoviesProvider
+  
+  ) {
   }
 
   //sempre é carregado automaticamente junto com a página
   ionViewDidLoad() {    
-    this.alertar("Thiago", "25");
-  }
+    
+    this.moviesProvider.getLatesMovies().subscribe(
+      data=>
+      {
+        const response = (data as any);
+        const filme = JSON.parse(response._body);
+        this.lista_filmes = filme.results;
+        console.log(filme);
+      },error=>
+      {
+        console.log(error);
+      }
 
-}
+    )//fecha subscrible
+   
+  }//fecha ionViewDidLoad
+
+}//Fecha classe
