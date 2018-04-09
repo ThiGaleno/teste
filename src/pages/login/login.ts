@@ -19,7 +19,7 @@ import { MoviesProvider } from '../../providers/movies/movies';
 })
 export class LoginPage {
   public nomeUsuario:string = "troxa";
-
+  public img = "https://image.tmdb.org/t/p/w185_and_h278_bestv2";
   public lista_filmes = new Array<any>();
 
   public alertar(nome:string, idade:string){
@@ -28,7 +28,7 @@ export class LoginPage {
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams,
+    public navParams: NavParams,    
     private moviesProvider: MoviesProvider
   
   ) {

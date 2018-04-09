@@ -43,24 +43,23 @@
       <p>November 5, 1955</p>
     </ion-item>
 
-    <img src="img/advance-card-bttf.png">
+    <img src="{{img}}{{filme.backdrop_path}}">
 
     <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
-        Whoa. This is heavy.</p>
+      <p>{{filme.overview}}.</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+          <div>Nota: {{filme.vote_average}}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <div>Linguagem: {{filme.original_language}}</div>
         </button>
       </ion-col>
       <ion-col center text-center>
